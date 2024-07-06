@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var rotation_speed = 0.01
+@export var rotation_speed = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,8 +8,8 @@ func _ready():
 
 
 func _physics_process(delta):
-	#rotate(rotation_speed)
 	pass
+	
 
 
 func _on_core_body_entered(body):
