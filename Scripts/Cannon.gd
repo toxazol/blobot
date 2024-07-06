@@ -5,17 +5,23 @@ extends Node2D
 
 const bulletTemplate = preload("res://Templates/bullet.tscn")
 
+var isStop = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 var time = 0
 func _process(delta):
+	if isStop:
+		return
 	time += delta
 	if time > FIRE_INTERVAL:
 		shoot()
 		time = 0
 
+func stopShooting():
+	isStop = true
 
 func shoot():
 	var bullet = bulletTemplate.instantiate()

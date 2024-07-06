@@ -4,8 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c6vy7y10ibe76" path="res://Sprites/roboboss_01_arm.png" id="2_qn6ab"]
 
 [node name="Arm" type="RigidBody2D"]
-position = Vector2(216, -472)
-rotation = 0.560251
 gravity_scale = 0.0
 script = ExtResource("1_5fl2l")
 

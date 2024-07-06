@@ -1,17 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://m46grcias75x"]
+[gd_scene load_steps=16 format=3 uid="uid://m46grcias75x"]
 
 [ext_resource type="Script" path="res://Scripts/Blobot.gd" id="1_dg4nb"]
 [ext_resource type="Texture2D" uid="uid://b5euy577uxyli" path="res://Sprites/blobot_01.png" id="1_r16l6"]
 [ext_resource type="Texture2D" uid="uid://2a41ky50pwao" path="res://Sprites/asteroid_00.png" id="2_bldxi"]
 [ext_resource type="Script" path="res://Blobot2.gd" id="3_tiwuq"]
-[ext_resource type="Texture2D" uid="uid://c6vy7y10ibe76" path="res://Sprites/roboboss_01_arm.png" id="3_vvrcl"]
 [ext_resource type="Script" path="res://Scripts/Crabot.gd" id="4_34ic0"]
 [ext_resource type="Texture2D" uid="uid://in002yh6nl3x" path="res://Sprites/roboboss_01_yellow_p4.png" id="4_36pw2"]
 [ext_resource type="Texture2D" uid="uid://ft76d2odtoyp" path="res://Sprites/roboboss_01_yellow_p1.png" id="5_xql23"]
 [ext_resource type="Texture2D" uid="uid://b74l2d5i1ijiy" path="res://Sprites/roboboss_01_yellow_p3.png" id="6_uyooe"]
+[ext_resource type="Texture2D" uid="uid://bdo7jlc5txihm" path="res://Sprites/roboboss_01_black_p4.png" id="7_i6ouf"]
 [ext_resource type="Texture2D" uid="uid://ck51spb024uoh" path="res://Sprites/roboboss_01_yellow_p2.png" id="7_pfain"]
-[ext_resource type="Script" path="res://Scripts/Cannon.gd" id="8_v7x81"]
-[ext_resource type="PackedScene" uid="uid://qxnie5vb830i" path="res://Templates/arm.tscn" id="10_ogvar"]
+[ext_resource type="Texture2D" uid="uid://bushnpbvbsncb" path="res://Sprites/roboboss_01_black_p1.png" id="9_mfy8f"]
+[ext_resource type="Texture2D" uid="uid://d00jq26xcdixb" path="res://Sprites/roboboss_01_black_p3.png" id="11_m5xws"]
+[ext_resource type="Texture2D" uid="uid://pfpav88m8mcs" path="res://Sprites/roboboss_01_black_p2.png" id="13_itobp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82nem"]
 radius = 18.0278
@@ -65,67 +66,10 @@ polygon = PackedVector2Array(12, -714.8, 12, -712.6, 42.1, -664, 45.2, -664, 181
 [node name="Crabot" type="Node2D" parent="."]
 position = Vector2(1576, 976)
 script = ExtResource("4_34ic0")
-rotation_speed = 0
 
 [node name="Body" type="RigidBody2D" parent="Crabot"]
 mass = 8.0
 gravity_scale = 0.0
-
-[node name="DampedSpringJoint2D" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
-
-[node name="DampedSpringJoint2D2" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm2")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
-
-[node name="DampedSpringJoint2D3" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm3")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
-
-[node name="DampedSpringJoint2D4" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm4")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
-
-[node name="DampedSpringJoint2D5" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm5")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
-
-[node name="DampedSpringJoint2D6" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm6")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
-
-[node name="DampedSpringJoint2D7" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm7")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
-
-[node name="DampedSpringJoint2D8" type="PinJoint2D" parent="Crabot/Body"]
-node_a = NodePath("..")
-node_b = NodePath("../../Arm8")
-disable_collision = false
-motor_enabled = true
-motor_target_velocity = 26.1799
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Crabot/Body"]
 polygon = PackedVector2Array(-39, -253.6, -39, -251.7, -31, -240.7, -31, -217, -28, -50, -29.8, -50, -31.8, -46, -35.5, -46, -43, -41.9, -43, -41.2, -55, -28.1, -55, -26.4, -62, -15.4, -62, -12.6, -68.6, 5, -73.7, 5, -152, 18.7, -243.5, 115.4, -246, 114.4, -246, 112.9, -339, 36.9, -339, 35.8, -353, 21.8, -353, 19, -357.5, 0, -355.6, 0, -353.6, -9, -352.1, -9, -346.1, -19, -344.8, -19, -321.8, -40, -319.7, -40, -66.7, -252, -62.1, -252, -53, -254.5, -53, -256.4)
@@ -151,8 +95,12 @@ process_mode = 4
 [node name="RigidBody2D" type="RigidBody2D" parent="Crabot/Body/Broken"]
 gravity_scale = 0.0
 
-[node name="Roboboss01YellowP4" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D"]
+[node name="Roboboss01YellowP4" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D" groups=["Intact"]]
 texture = ExtResource("4_36pw2")
+
+[node name="brokenPart" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D" groups=["Broken"]]
+visible = false
+texture = ExtResource("7_i6ouf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Crabot/Body/Broken/RigidBody2D"]
 polygon = PackedVector2Array(-39, -253.6, -39, -251.7, -31, -240.7, -31, -217, -28, -50, -29.8, -50, -31.8, -46, -35.5, -46, -43, -41.9, -43, -41.2, -55, -28.1, -55, -26.4, -62, -15.4, -62, -12.6, -68.6, 5, -73.7, 5, -152, 18.7, -243.5, 115.4, -246, 114.4, -246, 112.9, -339, 36.9, -339, 35.8, -353, 21.8, -353, 19, -357.5, 0, -355.6, 0, -353.6, -9, -352.1, -9, -346.1, -19, -344.8, -19, -321.8, -40, -319.7, -40, -66.7, -252, -62.1, -252, -53, -254.5, -53, -256.4)
@@ -160,8 +108,12 @@ polygon = PackedVector2Array(-39, -253.6, -39, -251.7, -31, -240.7, -31, -217, -
 [node name="RigidBody2D2" type="RigidBody2D" parent="Crabot/Body/Broken"]
 gravity_scale = 0.0
 
-[node name="Roboboss01YellowP1" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D2"]
+[node name="Roboboss01YellowP1" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D2" groups=["Intact"]]
 texture = ExtResource("5_xql23")
+
+[node name="brokenPart" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D2" groups=["Broken"]]
+visible = false
+texture = ExtResource("9_mfy8f")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Crabot/Body/Broken/RigidBody2D2"]
 polygon = PackedVector2Array(-66, -1.39999, -66, 12.4, -55.6, 38, -55, 38, -46, 51, -44.4, 51, -28, 61.9, -28, 66, -30, 238, -31, 238, -31, 254, -32.8, 254, -37.8, 264, -40.5, 264, -53, 269, -53, 266.7, -68, 263.6, -68, 261.9, -248.4, 110.6, -247.4, 108, -245.9, 108, -154.9, 10, -151.3, 10, -75, -2.70001, -75, -5)
@@ -169,8 +121,12 @@ polygon = PackedVector2Array(-66, -1.39999, -66, 12.4, -55.6, 38, -55, 38, -46, 
 [node name="RigidBody2D3" type="RigidBody2D" parent="Crabot/Body/Broken"]
 gravity_scale = 0.0
 
-[node name="Roboboss01YellowP3" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D3"]
+[node name="Roboboss01YellowP3" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D3" groups=["Intact"]]
 texture = ExtResource("6_uyooe")
+
+[node name="brokenPart" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D3" groups=["Broken"]]
+visible = false
+texture = ExtResource("11_m5xws")
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Crabot/Body/Broken/RigidBody2D3"]
 polygon = PackedVector2Array(58, -252.7, 58, -251.1, 73, -242.1, 73, -240.9, 244, -98.9, 244, -97.6, 248.3, -91.1, 247.2, -89, 245.8, -89, 160.8, -8, 154, -8, 59, -6, 59, -8.39999, 47.7, -29, 47.1, -29, 37.1, -41, 35.4, -41, 22, -49.9, 22, -56, 21, -56, 21, -60, 24, -241, 25.5, -241, 27.4, -249, 29.4, -249, 37, -254.1, 37, -256.4)
@@ -178,117 +134,14 @@ polygon = PackedVector2Array(58, -252.7, 58, -251.1, 73, -242.1, 73, -240.9, 244
 [node name="RigidBody2D4" type="RigidBody2D" parent="Crabot/Body/Broken"]
 gravity_scale = 0.0
 
-[node name="Roboboss01YellowP2" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D4"]
+[node name="Roboboss01YellowP2" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D4" groups=["Intact"]]
 texture = ExtResource("7_pfain")
+
+[node name="brokenPart" type="Sprite2D" parent="Crabot/Body/Broken/RigidBody2D4" groups=["Broken"]]
+visible = false
+texture = ExtResource("13_itobp")
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Crabot/Body/Broken/RigidBody2D4"]
 polygon = PackedVector2Array(342, -15.9, 342, -13.5, 350, -0.600006, 350, 11.4, 345.4, 24, 343.9, 24, 334.9, 35, 332.7, 35, 63.7, 261, 61.4, 261, 48.4, 267, 35, 267, 35, 265.1, 27, 260.1, 27, 256.3, 24, 249.4, 24, 199, 21, 62, 23.3, 62, 43, 47, 43, 45.4, 55, 27.4, 55, 24.7, 60, 7.70001, 60, 4, 57, -6.70001, 57, -11.8, 60.2, -15, 105, -15, 157.1, -16, 242, -94.9, 242, -96.3, 244.3, -97.4)
-
-[node name="Arm" parent="Crabot" instance=ExtResource("10_ogvar")]
-
-[node name="Arm2" type="RigidBody2D" parent="Crabot"]
-position = Vector2(464, -240)
-rotation = 0.837194
-gravity_scale = 0.0
-script = ExtResource("8_v7x81")
-
-[node name="Roboboss01Arm" type="Sprite2D" parent="Crabot/Arm2"]
-texture = ExtResource("3_vvrcl")
-
-[node name="ArmCollider" type="CollisionPolygon2D" parent="Crabot/Arm2"]
-polygon = PackedVector2Array(-33, -154.6, -28, -147.6, -28, -143.4, -13.3, -69, -9.3, -69, 12, -72.7, 12, -77, 15, -148, 17.2, -148, 20.2, -151, 26.6, -151, 38, -153.5, 38, -151, 53, -139, 53, -135.7, 100, -75.7, 100, -65, 66.6, 85, 65, 85, 54, 99, 50.4, 99, 33, 102.7, 33, 104.5, 24.2, 122, 22.8, 122, 14.8, 130, 11.5, 130, -1, 135, -1, 132.6, -19, 128.6, -19, 126.8, -30, 115.8, -30, 113.3, -32.4, 106, -35.3, 106, -51, 100.4, -51, 98.9, -64, 84.8, -64, 80, -100, -66.7, -100, -84.9, -98.6, -91, -97.1, -91, -60.1, -150, -58.4, -150, -43, -155.4, -43, -157, -33, -157)
-
-[node name="Crosshair" type="Node2D" parent="Crabot/Arm2"]
-position = Vector2(-3.70007, -186.554)
-
-[node name="Arm3" type="RigidBody2D" parent="Crabot"]
-position = Vector2(512, 216)
-rotation = 2.13726
-gravity_scale = 0.0
-script = ExtResource("8_v7x81")
-
-[node name="Roboboss01Arm" type="Sprite2D" parent="Crabot/Arm3"]
-texture = ExtResource("3_vvrcl")
-
-[node name="ArmCollider" type="CollisionPolygon2D" parent="Crabot/Arm3"]
-polygon = PackedVector2Array(-33, -154.6, -28, -147.6, -28, -143.4, -13.3, -69, -9.3, -69, 12, -72.7, 12, -77, 15, -148, 17.2, -148, 20.2, -151, 26.6, -151, 38, -153.5, 38, -151, 53, -139, 53, -135.7, 100, -75.7, 100, -65, 66.6, 85, 65, 85, 54, 99, 50.4, 99, 33, 102.7, 33, 104.5, 24.2, 122, 22.8, 122, 14.8, 130, 11.5, 130, -1, 135, -1, 132.6, -19, 128.6, -19, 126.8, -30, 115.8, -30, 113.3, -32.4, 106, -35.3, 106, -51, 100.4, -51, 98.9, -64, 84.8, -64, 80, -100, -66.7, -100, -84.9, -98.6, -91, -97.1, -91, -60.1, -150, -58.4, -150, -43, -155.4, -43, -157, -33, -157)
-
-[node name="Crosshair" type="Node2D" parent="Crabot/Arm3"]
-position = Vector2(-3.70007, -186.554)
-
-[node name="Arm4" type="RigidBody2D" parent="Crabot"]
-position = Vector2(208, 472)
-rotation = 2.70962
-gravity_scale = 0.0
-script = ExtResource("8_v7x81")
-
-[node name="Roboboss01Arm" type="Sprite2D" parent="Crabot/Arm4"]
-texture = ExtResource("3_vvrcl")
-
-[node name="ArmCollider" type="CollisionPolygon2D" parent="Crabot/Arm4"]
-polygon = PackedVector2Array(-33, -154.6, -28, -147.6, -28, -143.4, -13.3, -69, -9.3, -69, 12, -72.7, 12, -77, 15, -148, 17.2, -148, 20.2, -151, 26.6, -151, 38, -153.5, 38, -151, 53, -139, 53, -135.7, 100, -75.7, 100, -65, 66.6, 85, 65, 85, 54, 99, 50.4, 99, 33, 102.7, 33, 104.5, 24.2, 122, 22.8, 122, 14.8, 130, 11.5, 130, -1, 135, -1, 132.6, -19, 128.6, -19, 126.8, -30, 115.8, -30, 113.3, -32.4, 106, -35.3, 106, -51, 100.4, -51, 98.9, -64, 84.8, -64, 80, -100, -66.7, -100, -84.9, -98.6, -91, -97.1, -91, -60.1, -150, -58.4, -150, -43, -155.4, -43, -157, -33, -157)
-
-[node name="Crosshair" type="Node2D" parent="Crabot/Arm4"]
-position = Vector2(-3.70007, -186.554)
-
-[node name="Arm5" type="RigidBody2D" parent="Crabot"]
-position = Vector2(-224, 464)
-rotation = 3.6901
-gravity_scale = 0.0
-script = ExtResource("8_v7x81")
-
-[node name="Roboboss01Arm" type="Sprite2D" parent="Crabot/Arm5"]
-texture = ExtResource("3_vvrcl")
-
-[node name="ArmCollider" type="CollisionPolygon2D" parent="Crabot/Arm5"]
-polygon = PackedVector2Array(-33, -154.6, -28, -147.6, -28, -143.4, -13.3, -69, -9.3, -69, 12, -72.7, 12, -77, 15, -148, 17.2, -148, 20.2, -151, 26.6, -151, 38, -153.5, 38, -151, 53, -139, 53, -135.7, 100, -75.7, 100, -65, 66.6, 85, 65, 85, 54, 99, 50.4, 99, 33, 102.7, 33, 104.5, 24.2, 122, 22.8, 122, 14.8, 130, 11.5, 130, -1, 135, -1, 132.6, -19, 128.6, -19, 126.8, -30, 115.8, -30, 113.3, -32.4, 106, -35.3, 106, -51, 100.4, -51, 98.9, -64, 84.8, -64, 80, -100, -66.7, -100, -84.9, -98.6, -91, -97.1, -91, -60.1, -150, -58.4, -150, -43, -155.4, -43, -157, -33, -157)
-
-[node name="Crosshair" type="Node2D" parent="Crabot/Arm5"]
-position = Vector2(-3.70007, -186.554)
-
-[node name="Arm6" type="RigidBody2D" parent="Crabot"]
-position = Vector2(-520, 240)
-rotation = 4.09331
-gravity_scale = 0.0
-script = ExtResource("8_v7x81")
-
-[node name="Roboboss01Arm" type="Sprite2D" parent="Crabot/Arm6"]
-texture = ExtResource("3_vvrcl")
-
-[node name="ArmCollider" type="CollisionPolygon2D" parent="Crabot/Arm6"]
-polygon = PackedVector2Array(-33, -154.6, -28, -147.6, -28, -143.4, -13.3, -69, -9.3, -69, 12, -72.7, 12, -77, 15, -148, 17.2, -148, 20.2, -151, 26.6, -151, 38, -153.5, 38, -151, 53, -139, 53, -135.7, 100, -75.7, 100, -65, 66.6, 85, 65, 85, 54, 99, 50.4, 99, 33, 102.7, 33, 104.5, 24.2, 122, 22.8, 122, 14.8, 130, 11.5, 130, -1, 135, -1, 132.6, -19, 128.6, -19, 126.8, -30, 115.8, -30, 113.3, -32.4, 106, -35.3, 106, -51, 100.4, -51, 98.9, -64, 84.8, -64, 80, -100, -66.7, -100, -84.9, -98.6, -91, -97.1, -91, -60.1, -150, -58.4, -150, -43, -155.4, -43, -157, -33, -157)
-
-[node name="Crosshair" type="Node2D" parent="Crabot/Arm6"]
-position = Vector2(-3.70007, -186.554)
-
-[node name="Arm7" type="RigidBody2D" parent="Crabot"]
-position = Vector2(-568, -208)
-rotation = 5.13836
-gravity_scale = 0.0
-script = ExtResource("8_v7x81")
-
-[node name="Roboboss01Arm" type="Sprite2D" parent="Crabot/Arm7"]
-texture = ExtResource("3_vvrcl")
-
-[node name="ArmCollider" type="CollisionPolygon2D" parent="Crabot/Arm7"]
-polygon = PackedVector2Array(-33, -154.6, -28, -147.6, -28, -143.4, -13.3, -69, -9.3, -69, 12, -72.7, 12, -77, 15, -148, 17.2, -148, 20.2, -151, 26.6, -151, 38, -153.5, 38, -151, 53, -139, 53, -135.7, 100, -75.7, 100, -65, 66.6, 85, 65, 85, 54, 99, 50.4, 99, 33, 102.7, 33, 104.5, 24.2, 122, 22.8, 122, 14.8, 130, 11.5, 130, -1, 135, -1, 132.6, -19, 128.6, -19, 126.8, -30, 115.8, -30, 113.3, -32.4, 106, -35.3, 106, -51, 100.4, -51, 98.9, -64, 84.8, -64, 80, -100, -66.7, -100, -84.9, -98.6, -91, -97.1, -91, -60.1, -150, -58.4, -150, -43, -155.4, -43, -157, -33, -157)
-
-[node name="Crosshair" type="Node2D" parent="Crabot/Arm7"]
-position = Vector2(-3.70007, -186.554)
-
-[node name="Arm8" type="RigidBody2D" parent="Crabot"]
-position = Vector2(-256, -456)
-rotation = 5.65762
-gravity_scale = 0.0
-script = ExtResource("8_v7x81")
-
-[node name="Roboboss01Arm" type="Sprite2D" parent="Crabot/Arm8"]
-texture = ExtResource("3_vvrcl")
-
-[node name="ArmCollider" type="CollisionPolygon2D" parent="Crabot/Arm8"]
-polygon = PackedVector2Array(-33, -154.6, -28, -147.6, -28, -143.4, -13.3, -69, -9.3, -69, 12, -72.7, 12, -77, 15, -148, 17.2, -148, 20.2, -151, 26.6, -151, 38, -153.5, 38, -151, 53, -139, 53, -135.7, 100, -75.7, 100, -65, 66.6, 85, 65, 85, 54, 99, 50.4, 99, 33, 102.7, 33, 104.5, 24.2, 122, 22.8, 122, 14.8, 130, 11.5, 130, -1, 135, -1, 132.6, -19, 128.6, -19, 126.8, -30, 115.8, -30, 113.3, -32.4, 106, -35.3, 106, -51, 100.4, -51, 98.9, -64, 84.8, -64, 80, -100, -66.7, -100, -84.9, -98.6, -91, -97.1, -91, -60.1, -150, -58.4, -150, -43, -155.4, -43, -157, -33, -157)
-
-[node name="Crosshair" type="Node2D" parent="Crabot/Arm8"]
-position = Vector2(-3.70007, -186.554)
 
 [connection signal="body_entered" from="Crabot/Body/Core" to="Crabot" method="_on_core_body_entered"]
