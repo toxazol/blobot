@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Blobot.gd" id="1_dg4nb"]
 [ext_resource type="Texture2D" uid="uid://b5euy577uxyli" path="res://Sprites/blobot_01.png" id="1_r16l6"]
 [ext_resource type="Texture2D" uid="uid://2a41ky50pwao" path="res://Sprites/asteroid_00.png" id="2_bldxi"]
-[ext_resource type="Script" path="res://Blobot2.gd" id="3_tiwuq"]
+[ext_resource type="Script" path="res://Scripts/Blobot2.gd" id="3_tiwuq"]
 [ext_resource type="Script" path="res://Scripts/Crabot.gd" id="4_34ic0"]
 [ext_resource type="Texture2D" uid="uid://in002yh6nl3x" path="res://Sprites/roboboss_01_yellow_p4.png" id="4_36pw2"]
 [ext_resource type="Texture2D" uid="uid://ft76d2odtoyp" path="res://Sprites/roboboss_01_yellow_p1.png" id="5_xql23"]
@@ -22,15 +22,12 @@ radius = 48.6621
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2954, 1672)
-zoom = Vector2(0.195, 0.195)
-
-[node name="Blobot" type="RigidBody2D" parent="." groups=["Player"]]
-position = Vector2(1584, 144)
+[node name="Blobot" type="RigidBody2D" parent="." node_paths=PackedStringArray("progressBar") groups=["Player"]]
+position = Vector2(3632, 1912)
 gravity_scale = 0.0
 script = ExtResource("1_dg4nb")
 force_magnitude = 1000.0
+progressBar = NodePath("../HUD/ProgressBar")
 
 [node name="Blobot01" type="Sprite2D" parent="Blobot"]
 texture = ExtResource("1_r16l6")
@@ -38,6 +35,11 @@ texture = ExtResource("1_r16l6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blobot"]
 position = Vector2(1, 7)
 shape = SubResource("CircleShape2D_82nem")
+
+[node name="Camera2D" type="Camera2D" parent="Blobot"]
+zoom = Vector2(0.195, 0.195)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
 
 [node name="Blobot2" type="CharacterBody2D" parent="." groups=["Player"]]
 process_mode = 4
@@ -54,7 +56,7 @@ position = Vector2(1, 7)
 shape = SubResource("CircleShape2D_82nem")
 
 [node name="Asteroid" type="StaticBody2D" parent="."]
-position = Vector2(1952, 2184)
+position = Vector2(2320, 2808)
 rotation = 1.58664
 
 [node name="Asteroid00" type="Sprite2D" parent="Asteroid"]
@@ -66,6 +68,7 @@ polygon = PackedVector2Array(12, -714.8, 12, -712.6, 42.1, -664, 45.2, -664, 181
 [node name="Crabot" type="Node2D" parent="."]
 position = Vector2(1576, 976)
 script = ExtResource("4_34ic0")
+torque = 100
 
 [node name="Body" type="RigidBody2D" parent="Crabot"]
 mass = 8.0
@@ -143,5 +146,16 @@ texture = ExtResource("13_itobp")
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Crabot/Body/Broken/RigidBody2D4"]
 polygon = PackedVector2Array(342, -15.9, 342, -13.5, 350, -0.600006, 350, 11.4, 345.4, 24, 343.9, 24, 334.9, 35, 332.7, 35, 63.7, 261, 61.4, 261, 48.4, 267, 35, 267, 35, 265.1, 27, 260.1, 27, 256.3, 24, 249.4, 24, 199, 21, 62, 23.3, 62, 43, 47, 43, 45.4, 55, 27.4, 55, 24.7, 60, 7.70001, 60, 4, 57, -6.70001, 57, -11.8, 60.2, -15, 105, -15, 157.1, -16, 242, -94.9, 242, -96.3, 244.3, -97.4)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 176.0
+offset_bottom = 35.0
+max_value = 5.0
+step = 1.0
+show_percentage = false
 
 [connection signal="body_entered" from="Crabot/Body/Core" to="Crabot" method="_on_core_body_entered"]

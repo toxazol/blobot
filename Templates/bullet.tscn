@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cfamacph1cvix" path="res://Sprites/robot_bullet_yellow.png" id="2_m6rt8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pqek3"]
-radius = 11.3137
+radius = 16.76
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="Area2D"]
 position = Vector2(-3.70007, -186.554)
-motion_mode = 1
+monitorable = false
 script = ExtResource("1_7upmf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,4 +16,5 @@ texture = ExtResource("2_m6rt8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pqek3")
-disabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

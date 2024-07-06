@@ -6,6 +6,8 @@
 [node name="Arm" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_5fl2l")
+BULLET_SPEED = 1000.0
+FIRE_INTERVAL = 0.1
 
 [node name="Roboboss01Arm" type="Sprite2D" parent="."]
 texture = ExtResource("2_qn6ab")

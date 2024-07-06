@@ -27,5 +27,5 @@ func shoot():
 	var bullet = bulletTemplate.instantiate()
 	get_parent().add_child(bullet)
 	bullet.global_position = $Crosshair.global_position
-	bullet.SPEED = BULLET_SPEED
-	bullet.DIRECTION = $Crosshair.global_position - global_position
+	bullet.speed = BULLET_SPEED
+	bullet.direction = $Crosshair.global_position - global_position
