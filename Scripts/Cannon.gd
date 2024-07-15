@@ -2,6 +2,7 @@ extends Node2D
 
 @export var BULLET_SPEED : float = 300
 @export var FIRE_INTERVAL : float = 1
+@export var crooshair: Node2D
 
 const bulletTemplate = preload("res://Templates/bullet.tscn")
 
@@ -25,7 +26,19 @@ func stopShooting():
 
 func shoot():
 	var bullet = bulletTemplate.instantiate()
-	get_parent().add_child(bullet)
-	bullet.global_position = $Crosshair.global_position
-	bullet.speed = BULLET_SPEED
-	bullet.direction = $Crosshair.global_position - global_position
+	# spawn bullets as children of the root node
+	get_tree().root.get_child(0).add_child(bullet)
+	bullet.global_position = crooshair.global_position
+	var shootDir = crooshair.global_position - global_position
+	var shootVel = shootDir.normalized() * BULLET_SPEED
+	var moveVel = get_closest_rigidbody().linear_velocity
+	bullet.velocity = moveVel + shootVel
+
+
+func get_closest_rigidbody() -> RigidBody2D:
+	var current_node = self
+	while current_node:
+		if current_node is RigidBody2D:
+			return current_node
+		current_node = current_node.get_parent()
+	return null  # Return null if no RigidBody2D is found

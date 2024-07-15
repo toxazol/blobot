@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://m46grcias75x"]
+[gd_scene load_steps=32 format=3 uid="uid://m46grcias75x"]
 
 [ext_resource type="Script" path="res://Scripts/Blobot.gd" id="1_dg4nb"]
 [ext_resource type="Texture2D" uid="uid://b5euy577uxyli" path="res://Sprites/blobot_01.png" id="1_r16l6"]
@@ -10,9 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://b74l2d5i1ijiy" path="res://Sprites/roboboss_01_yellow_p3.png" id="6_uyooe"]
 [ext_resource type="Texture2D" uid="uid://bdo7jlc5txihm" path="res://Sprites/roboboss_01_black_p4.png" id="7_i6ouf"]
 [ext_resource type="Texture2D" uid="uid://ck51spb024uoh" path="res://Sprites/roboboss_01_yellow_p2.png" id="7_pfain"]
+[ext_resource type="Script" path="res://Scripts/Cannon.gd" id="8_v7x81"]
 [ext_resource type="Texture2D" uid="uid://bushnpbvbsncb" path="res://Sprites/roboboss_01_black_p1.png" id="9_mfy8f"]
 [ext_resource type="Texture2D" uid="uid://d00jq26xcdixb" path="res://Sprites/roboboss_01_black_p3.png" id="11_m5xws"]
 [ext_resource type="Texture2D" uid="uid://pfpav88m8mcs" path="res://Sprites/roboboss_01_black_p2.png" id="13_itobp"]
+[ext_resource type="Script" path="res://Scripts/Snakebot.gd" id="14_dbwqb"]
 [ext_resource type="Texture2D" uid="uid://ct81pipxpf2a" path="res://Sprites/roboboss_02_p1.png" id="14_nb6ui"]
 [ext_resource type="Texture2D" uid="uid://cqwolhdsj874e" path="res://Sprites/roboboss_02_p4.png" id="15_kslv5"]
 [ext_resource type="Texture2D" uid="uid://y5xbgvhob378" path="res://Sprites/roboboss_02_p3.png" id="16_3exo5"]
@@ -64,7 +66,7 @@ shape = SubResource("CircleShape2D_82nem")
 [node name="Camera2D" type="Camera2D" parent="Blobot"]
 zoom = Vector2(0.195, 0.195)
 position_smoothing_enabled = true
-position_smoothing_speed = 1.0
+position_smoothing_speed = 3.0
 
 [node name="Blobot2" type="CharacterBody2D" parent="." groups=["Player"]]
 process_mode = 4
@@ -175,14 +177,33 @@ polygon = PackedVector2Array(342, -15.9, 342, -13.5, 350, -0.600006, 350, 11.4, 
 [node name="Snakebot" type="Node2D" parent="."]
 position = Vector2(4448, 1080)
 
-[node name="Head" type="RigidBody2D" parent="Snakebot"]
+[node name="Head" type="RigidBody2D" parent="Snakebot" node_paths=PackedStringArray("target", "neck")]
+position = Vector2(-8, -536)
 gravity_scale = 0.0
+center_of_mass_mode = 1
+script = ExtResource("14_dbwqb")
+force_magnitude = 2000.0
+angle_step = 1.0
+target = NodePath("../../Blobot")
+neck = NodePath("../Neck")
 
 [node name="Roboboss02P1" type="Sprite2D" parent="Snakebot/Head"]
+position = Vector2(11.29, 540)
 texture = ExtResource("14_nb6ui")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Snakebot/Head"]
+position = Vector2(11.29, 540)
 polygon = PackedVector2Array(-150, -569.1, -144, -565.1, -144, -560.6, -129.9, -539, -129.2, -539, -84, -543.2, -84, -541, -80, -538, -80, -532.4, -97.6, -506, -72.3, -513, -63.3, -513, -58, -509, -58, -504.6, -74.4, -461.2, -44.5, -416.8, -33.6, -468, -31.6, -468, -27, -471.1, -27, -475.1, -21.7, -512, -20.1, -512, -16.1, -518, 0, -518, 0, -515.8, 5, -510.8, 5, -503, 9.70001, -472, 11, -472, 18, -462.7, 18, -457, 27.7, -418.3, 59, -461.6, 44, -495.6, 44, -500, 41.4, -510, 43.9, -510, 45.9, -513, 57, -513, 57, -511.6, 82, -506, 64, -530.3, 64, -539, 66, -539, 69, -543, 78, -543, 78, -541.9, 112, -539.2, 127, -558.7, 127, -560.3, 129.6, -568, 131.3, -568, 135.3, -571, 139.3, -571, 285, -530.5, 285, -529.1, 292, -525.2, 292, -522.6, 294.3, -519.1, 293.2, -517, 292, -517, 256, -466, 255, -466, 117, -286, 51.5, -286, 43, -290.8, 43, -293.6, 38.6, -305, 38, -305, 24, -323, 22.5, -323, 10.5, -330, 5.79999, -330, -7, -332.5, -29, -329.2, -38, -324.7, -55, -305.3, -55, -303.8, -57.3, -291, -59.4, -291, -65.4, -287, -69, -287, -135, -286, -135, -288.3, -310, -516.3, -310, -524.3, -291.4, -533, -287.1, -533, -159, -569.5, -159, -571, -150, -571)
+
+[node name="Cannon" type="Node2D" parent="Snakebot/Head" node_paths=PackedStringArray("crooshair")]
+position = Vector2(0, 8)
+script = ExtResource("8_v7x81")
+BULLET_SPEED = 1000.0
+FIRE_INTERVAL = 0.5
+crooshair = NodePath("Crosshair")
+
+[node name="Crosshair" type="Node2D" parent="Snakebot/Head/Cannon"]
+position = Vector2(0, -128)
 
 [node name="Neck" type="RigidBody2D" parent="Snakebot"]
 gravity_scale = 0.0

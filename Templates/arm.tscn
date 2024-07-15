@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Cannon.gd" id="1_5fl2l"]
 [ext_resource type="Texture2D" uid="uid://c6vy7y10ibe76" path="res://Sprites/roboboss_01_arm.png" id="2_qn6ab"]
 
-[node name="Arm" type="RigidBody2D"]
+[node name="Arm" type="RigidBody2D" node_paths=PackedStringArray("crooshair")]
 gravity_scale = 0.0
 script = ExtResource("1_5fl2l")
 BULLET_SPEED = 1000.0
 FIRE_INTERVAL = 0.1
+crooshair = NodePath("Crosshair")
 
 [node name="Roboboss01Arm" type="Sprite2D" parent="."]
 texture = ExtResource("2_qn6ab")
