@@ -4,6 +4,8 @@ extends RigidBody2D
 @export var fullHealth: float = 5
 @export var curHealth: float
 @export var progressBar: ProgressBar
+@export var isAugmented: bool = true
+@export var augmentedRotateSpeed: float = 50
 
 func _ready():
 	curHealth = fullHealth
@@ -11,10 +13,20 @@ func _ready():
 	progressBar.value = curHealth
 
 func _physics_process(delta: float) -> void:
-	var force = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		
-	force = force.normalized() * force_magnitude
+	var inputVec = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if isAugmented:
+		moveAugmented(inputVec, delta)
+	else :
+		move(inputVec, delta)
+	
+func move(inputVec, delta):
+	var force = inputVec.normalized() * force_magnitude
 	apply_central_impulse(force * delta)
+
+func moveAugmented(inputVec, delta):
+	var dir = $Cannon/Crosshair.global_position - global_position
+	apply_torque_impulse(dir.angle_to(inputVec)*augmentedRotateSpeed)
+	move(inputVec, delta)
 
 func takeDamage(damage):
 	curHealth -= damage
